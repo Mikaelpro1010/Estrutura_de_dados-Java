@@ -9,6 +9,27 @@ public class LeituraArquivoTXT extends Palavras {
         super(palavra);
     }
 
+    // Método para ler palavras-chave de um arquivo TXT
+    public Set<String> lerPalavrasChave(String caminhoArquivoPalavrasChave) throws FileNotFoundException {
+        Set<String> palavrasChave = new HashSet<>();
+
+        File file = new File(caminhoArquivoPalavrasChave);
+        Scanner leitura = new Scanner(file);
+
+        try {
+            while (leitura.hasNextLine()) {
+                String palavra = leitura.nextLine().trim().toLowerCase(); // Converte para minúsculas e remove espaços em branco
+                if (!palavra.isEmpty()) {
+                    palavrasChave.add(palavra); // Adiciona ao conjunto de palavras-chave
+                }
+            }
+        } finally {
+            leitura.close(); // Fecha o scanner
+        }
+
+        return palavrasChave;
+    }
+
     // Método para criar o índice remissivo
     public HashMap<String, Palavras> criarIndiceRemissivo(String caminho, Set<String> palavrasChave) throws FileNotFoundException {
         // Criando a estrutura Hash Table para armazenar as palavras-chave e suas linhas
@@ -17,7 +38,7 @@ public class LeituraArquivoTXT extends Palavras {
         File file = new File(caminho);
         Scanner leitura = new Scanner(file);
 
-        int numeroLinha = -1; // Contador de linhas começando em -1
+        int numeroLinha = 0; // Contador de linhas começando em -1
 
         try {
             while (leitura.hasNextLine()) {

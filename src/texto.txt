@@ -1,10 +1,9 @@
-“Good programming is not learned 
-from generalities, but by seeing how 
-significant programs can be made 
-clean, easy to read, easy to maintain 
-and modify,
-human-engineered, efficient, and 
-reliable, by the application of 
-common sense and
+"Aqueles que semeiam com lágrimas,
+com cantos de alegria colherão. Aqueles que saem chorando
+enquanto lançam a semente,
+voltarão com cantos de alegria,
+trazendo os seus feixes.
+Essa mensagem é para você que pensa em desistir,
+calma, continue lançando a semente!"
 
-by the use of good programming practices.”
+

@@ -23,6 +23,6 @@ public class Palavras {
 
     @Override
     public String toString() {
-        return "Palavra: '" + palavra + "', Linhas: " + linhas;
+        return "Palavra: '" + palavra + "', Linha: " + linhas;
     }
 }

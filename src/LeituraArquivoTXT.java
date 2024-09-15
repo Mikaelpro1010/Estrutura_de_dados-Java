@@ -14,36 +14,36 @@ public class LeituraArquivoTXT extends Palavras {
         Set<String> palavrasChave = new HashSet<>();
 
         File file = new File(caminhoArquivoPalavrasChave);
-        Scanner leitura = new Scanner(file);
+        Scanner leituraArquivoPalavrasChave = new Scanner(file);
 
         try {
-            while (leitura.hasNextLine()) {
-                String palavra = leitura.nextLine().trim().toLowerCase(); // Converte para minúsculas e remove espaços em branco
+            while (leituraArquivoPalavrasChave.hasNextLine()) {
+                String palavra = leituraArquivoPalavrasChave.nextLine().trim().toLowerCase(); // Converte para minúsculas e remove espaços em branco
                 if (!palavra.isEmpty()) {
                     palavrasChave.add(palavra); // Adiciona ao conjunto de palavras-chave
                 }
             }
         } finally {
-            leitura.close(); // Fecha o scanner
+            leituraArquivoPalavrasChave.close(); // Fecha o scanner
         }
 
         return palavrasChave;
     }
 
     // Método para criar o índice remissivo
-    public HashMap<String, Palavras> criarIndiceRemissivo(String caminho, Set<String> palavrasChave) throws FileNotFoundException {
+    public HashMap<String, Palavras> criarIndiceRemissivo(String caminhoArquivoTXT, Set<String> palavrasChave) throws FileNotFoundException {
         // Criando a estrutura Hash Table para armazenar as palavras-chave e suas linhas
         HashMap<String, Palavras> indiceRemissivo = new HashMap<>();
 
-        File file = new File(caminho);
-        Scanner leitura = new Scanner(file);
+        File file = new File(caminhoArquivoTXT);
+        Scanner leituraArquivoTXT = new Scanner(file);
 
-        int numeroLinha = 0; // Contador de linhas começando em -1
+        int numeroLinha = 0; // Contador de linhas começando em 0
 
         try {
-            while (leitura.hasNextLine()) {
+            while (leituraArquivoTXT.hasNextLine()) {
                 numeroLinha++; // Incrementa o número da linha, começando em 0 na primeira linha
-                String linha = leitura.nextLine();
+                String linha = leituraArquivoTXT.nextLine();
                 // Tratamento da linha para incluir palavras com hífen como "human-engineered"
                 String[] palavras = linha.split("[\\s,;:.!?()\\[\\]\"']+"); // Divide a linha em palavras com mais separadores
 
@@ -66,7 +66,7 @@ public class LeituraArquivoTXT extends Palavras {
                 }
             }
         } finally {
-            leitura.close(); // Fecha o scanner
+            leituraArquivoTXT.close(); // Fecha o scanner
         }
 
         return indiceRemissivo;
